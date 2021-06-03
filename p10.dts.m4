@@ -260,6 +260,19 @@ define(`id', eval(`$2 % 2'))dnl
 		reg = <0x00 CONCAT(0x,addr) 0xfffff>;
 		compatible = "ibm,power10-memport";
 		index = <$2>;
+')
+
+dnl
+dnl DIMM([index])
+dnl
+define(`DIMM',
+`
+	CONCAT(dimm@, $1) {
+		#address-cells = <0x02>;
+		#size-cells = <0x01>;
+		reg = <0x00 0x08010000 0x3c00>;
+		compatible = "ibm,power10-dimm";
+		index = <$1>;
 	};
 ')
 
@@ -389,11 +402,15 @@ define(`CHIP',
 							OMI_(c,0)
 								OCMB(0)
 								    MEM_PORT_(c,0)
+								        DIMM(0)
+								    };
 								};
 							};
 							OMI_(c,1)
 								OCMB(1)
 								    MEM_PORT_(c,1)
+								        DIMM(1)
+								    };
 								};
 							};
 						};
@@ -401,11 +418,15 @@ define(`CHIP',
 							OMI_(c,2)
 								OCMB(2)
 								    MEM_PORT_(c,2)
+								        DIMM(2)
+								    };
 								};
 							};
 							OMI_(c,3)
 								OCMB(3)
 								    MEM_PORT_(c,3)
+								        DIMM(3)
+								    };
 								};
 							};
 						};
@@ -422,11 +443,15 @@ define(`CHIP',
 							OMI_(d,4)
 								OCMB(4)
 								    MEM_PORT_(d,4)
+								        DIMM(4)
+								    };
 								};
 							};
 							OMI_(d,5)
 								OCMB(5)
 								    MEM_PORT_(d,5)
+								        DIMM(5)
+								    };
 								};
 							};
 						};
@@ -434,11 +459,15 @@ define(`CHIP',
 							OMI_(d,6)
 								OCMB(6)
 								    MEM_PORT_(d,6)
+								        DIMM(6)
+								    };
 								};
 							};
 							OMI_(d,7)
 								OCMB(7)
 								    MEM_PORT_(d,7)
+								        DIMM(7)
+								    };
 								};
 							};
 						};
